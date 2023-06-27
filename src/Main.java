@@ -1,13 +1,17 @@
 public class Main {
     public static void main(String[] args) {
 
-        // division(5,0); // деление на 0
+        // division(5,0); // 1) деление на 0
 
         int[] arr = {1,3,5,6};
-        //printArray(arr); // выход за пределы массива
+        //printArray(arr); // 2) выход за пределы массива
 
         String[] stringNumber = new String[]{"1", "3", "5", "rr", "6"};
-        getStringNumber(stringNumber); // преобразование типов
+        //getStringNumber(stringNumber); // 3) преобразование типов
+
+        int[] num1 = {8,4,6};
+        int[] num2 = {2,3};
+        Integer[] num3 = divisionArray(num1,num2); // 4) выбрасывание своего исключения
     }
 
     /**
@@ -52,5 +56,23 @@ public class Main {
             System.out.println("Неверное преобразование типов");
             numEx.printStackTrace();
         }
+    }
+
+    /**
+     * @apiNote выбрасывание собственного исключения
+     * @param arrNum1 массив чисел
+     * @param arrNum2 массив чисел
+     * @return массив чисел
+     */
+    public static Integer[] divisionArray(int[] arrNum1, int[] arrNum2){
+        Integer[] result = new Integer[arrNum1.length];
+        if(arrNum1.length != arrNum2.length){
+            throw new RuntimeException("Размеры массивов не равны!");
+        }else{
+            for (int i = 0; i < arrNum1.length; i++) {
+                result[i] = arrNum1[i]/arrNum2[i];
+            }
+        }
+        return result;
     }
 }
